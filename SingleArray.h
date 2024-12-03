@@ -6,28 +6,17 @@ template<typename T>
 class SingleArray : public Array<T>
 {
 public:
-  explicit SingleArray(int size = 1)
-  {
-    Size = size;
-    Data = new T[Size];
-    Realloc++;
-    Name = "Фиксированный массив";
-  }
+  explicit SingleArray(size_t size = 1);
 
   ~SingleArray() override = default;
 
-  T value(int index) const override
-  {
-    return Data[index];
-  }
+  T value(size_t index) const override;
 
-  void add(T value, int index) override
-  {
+  void put(T value) override;
 
-  }
+  void add(T value, size_t index) override;
 
-  T remove(int index) override
-  {
-    return {};
-  }
+  T remove(size_t index) override;
 };
+
+template class SingleArray<int>;

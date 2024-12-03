@@ -6,34 +6,15 @@ template<typename T>
 class VectorArray : public Array<T>
 {
 public:
-  explicit VectorArray(int size = 1)
-  {
-    Size = size;
-    Data = new T[Size];
-    Realloc++;
-    Name = "Динамический массив + 1";
-  }
+  explicit VectorArray(size_t size = 1);
 
-  ~VectorArray()
-  {
-    if (Data != nullptr)
-    {
-      delete []Data;
-    }
-  }
+  T value(size_t index) const override;
 
-  T value(int index) const override
-  {
-    return Data[index];
-  }
+  void put(T value) override;
 
-  void add(T value, int index) override
-  {
+  void add(T value, size_t index) override;
 
-  }
-
-  T remove(int index) override
-  {
-    return {};
-  }
+  T remove(size_t index) override;
 };
+
+template class VectorArray<int>;

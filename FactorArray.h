@@ -6,28 +6,15 @@ template<typename T>
 class FactorArray : public Array<T>
 {
 public:
-  explicit FactorArray(int size = 1)
-  {
-    Size = size;
-    Data = new T[Size];
-    Realloc++;
-    Name = "Динамический массив * 2";
-  }
+  explicit FactorArray(size_t size = 1);
 
-  ~FactorArray() override = default;
+  T value(size_t index) const override;
 
-  T value(int index) const override
-  {
-    return Data[index];
-  }
+  void put(T value) override;
 
-  void add(T item, int index) override
-  {
+  void add(T value, size_t index) override;
 
-  }
-
-  T remove(int index) override
-  {
-    return {};
-  }
+  T remove(size_t index) override;
 };
+
+template class FactorArray<int>;

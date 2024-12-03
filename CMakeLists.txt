@@ -9,13 +9,13 @@ add_executable(arrays
   main.cxx
   Array.h
   SingleArray.h
-  #SingleArray.cxx
+  SingleArray.cxx
   VectorArray.h
-  #VectorArray.cxx
+  VectorArray.cxx
   FactorArray.h
-  #FactorArray.cxx
+  FactorArray.cxx
   MatrixArray.h
-  #MatrixArray.cxx
+  MatrixArray.cxx
 )
 
 include(GNUInstallDirs)

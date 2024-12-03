@@ -3,41 +3,33 @@
 #include <string>
 
 template<typename T>
-class Array
-{
+class Array {
 protected:
-  int Size = 0;
-  T* Data = nullptr;
-  int Realloc = 0;
-  std::string Name;
+  size_t Size = 0; // длина массива
+  size_t Count = 0; // количество занятых элементов массива
+  T* Data = nullptr; // указатель на первый элемент массива
+  size_t Realloc = 0; // количество выделений памяти
+  std::string Name; // наименование массива
 
 public:
-  virtual ~Array()
-  {
+  virtual ~Array() {
     if (Data != nullptr)
-    {
       delete []Data;
-    }
   }
 
-  virtual int realloc() const
-  {
-    return Realloc;
-  }
+  size_t realloc() const { return Realloc; }
 
-  virtual int size() const
-  {
-    return Size;
-  }
+  size_t size() const { return Count; }
 
-  virtual std::string name() const
-  {
-    return Name;
-  }
+  std::string name() const { return Name; }
 
-  virtual T value(int index) const = 0;
+  void resetRealloc() { Realloc = 0; }
 
-  virtual void add(T value, int index) = 0;
+  virtual T value(size_t index) const = 0;
 
-  virtual T remove(int index) = 0;
+  virtual void put(T value) = 0;
+
+  virtual void add(T value, size_t index) = 0;
+
+  virtual T remove(size_t index) = 0;
 };

@@ -3,56 +3,31 @@
 #include <string>
 
 template<typename T>
-class MatrixArray
-{
+class MatrixArray {
 private:
-  int Size = 0;
+  size_t Lenght = 1;
+  const size_t Size = 10;
+  size_t Count = 0;
   T** Data = nullptr;
-  int Realloc = 0;
-  std::string Name;
+  size_t Realloc = 0;
+  std::string Name = "Free array";
 
 public:
-  MatrixArray()
-  {
-    Size = 10;
-    Name = "Свободный массив";
-  }
+  MatrixArray();
 
-  virtual ~MatrixArray()
-  {
-    for (int i = 0; i < Size; ++i)
-    {
-      delete []*Data;
-    }
-  }
+  ~MatrixArray();
 
-  int realloc() const
-  {
-    return Realloc;
-  }
+  T value(size_t index) const;
 
-  int size() const
-  {
-    return Size;
-  }
+  void put(T value);
 
-  std::string name() const
-  {
-    return Name;
-  }
+  void add(T value, size_t index);
 
-  T value(int index) const
-  {
-    return Data[index];
-  }
+  size_t realloc() const { return Realloc; }
 
-  void add(T value, int index)
-  {
+  std::string name() const { return Name; }
 
-  }
-
-  T remove(int index)
-  {
-    return {};
-  }
+  void resetRealloc() { Realloc = 0; }
 };
+
+template class MatrixArray<int>;
