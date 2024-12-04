@@ -11,8 +11,8 @@ const int N = 10000;
 using namespace std;
 
 size_t current() {
-  return std::chrono::duration_cast<std::chrono::milliseconds>(
-             std::chrono::system_clock::now().time_since_epoch()).count();
+  return chrono::duration_cast<chrono::milliseconds>(
+             chrono::system_clock::now().time_since_epoch()).count();
 }
 
 void printArr(Array<int> *arr) {
@@ -32,7 +32,7 @@ void putValues(Array<int> *arr, int N) {
       try {
         arr->put(val);
       }
-      catch (const std::exception &ex) {
+      catch (const exception &ex) {
         cout << ex.what() << endl;
       }
     }
@@ -55,7 +55,7 @@ void addValues(Array<int> *arr, int N) {
       try {
         arr->add(val, 0);
       }
-      catch (const std::exception &ex) {
+      catch (const exception &ex) {
         cout << ex.what() << endl;
       }
     }
@@ -76,7 +76,7 @@ void removeValues(Array<int> *arr) {
     try {
       ignore = arr->remove(0);
     }
-    catch (const std::exception &ex) {
+    catch (const exception &ex) {
       cout << ex.what() << endl;
     }
   }
@@ -89,7 +89,7 @@ void removeValues(Array<int> *arr) {
   arr->resetRealloc();
 }
 
-void doWork(const std::vector<Array<int>*> &container) {
+void arraysDoWork(const vector<Array<int>*> &container) {
   for (auto arr : container) {
     putValues(arr, N);
     addValues(arr, N);
@@ -99,7 +99,7 @@ void doWork(const std::vector<Array<int>*> &container) {
   }
 }
 
-void doWork() {
+void matrixDoWork() {
   cout << "PUT VALUES" << "\n";
   for (int n = 100; n <= N; n *= 10) {
     cout << "N = " << n << "\n";
@@ -110,7 +110,7 @@ void doWork() {
       try {
         matrix.put(val);
       }
-      catch (const std::exception &ex) {
+      catch (const exception &ex) {
         cout << ex.what() << endl;
       }
     }
@@ -123,15 +123,15 @@ void doWork() {
 }
 
 int main() {
-  std::vector<Array<int>*> container;
+  vector<Array<int>*> container;
   container.emplace_back(new VectorArray<int>());
   container.emplace_back(new FactorArray<int>());
 
   try {
-    doWork(container);
-    doWork();
+    arraysDoWork(container);
+    matrixDoWork();
   }
-  catch (const std::exception &ex) {
+  catch (const exception &ex) {
     cout << ex.what() << endl;
   }
 

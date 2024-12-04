@@ -2,6 +2,9 @@
 
 #include "Array.h"
 
+/**
+ * @brief The FactorArray класс динамического массива
+ */
 template<typename T>
 class FactorArray : public Array<T>
 {

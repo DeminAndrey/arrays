@@ -2,6 +2,9 @@
 
 #include "Array.h"
 
+/**
+ * @brief The VectorArray класс динамического массива
+ */
 template<typename T>
 class VectorArray : public Array<T>
 {

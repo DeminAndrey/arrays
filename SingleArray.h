@@ -2,6 +2,9 @@
 
 #include "Array.h"
 
+/**
+ * @brief The SingleArray класс фиксированного массива
+ */
 template<typename T>
 class SingleArray : public Array<T>
 {
